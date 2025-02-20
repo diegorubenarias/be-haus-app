@@ -1,0 +1,48 @@
+<div class="login-container">
+    <div class="login-card">
+      <div>
+        <h1 class="title"><span class="primary-color">Be</span><span>Haus</span></h1>
+        <h4 class="sub-title">Temporary Apartaments</h4>
+      
+      </div>
+      <form (ngSubmit)="onSubmit()">
+        <mat-form-field class="full-width" appearance="fill">
+          <mat-label>Usuario</mat-label>
+          <input matInput type="email" placeholder="Ingresa tu email" [(ngModel)]="email" name="email" required />
+        </mat-form-field>
+  
+        <mat-form-field class="full-width" appearance="fill">
+          <mat-label>Contraseña</mat-label>
+          <input matInput type="password" placeholder="Ingresa tu contraseña" [(ngModel)]="password" name="password" required />
+        </mat-form-field>
+  
+        <button mat-raised-button color="primary" class="login-button" type="submit">Iniciar sesión</button>
+  
+        <a class="forgot-password" href="#">¿Olvidaste tu contraseña?</a>
+      </form>
+    </div>
+  </div>
+  <footer class="footer">
+    <div class="footer-content">
+      <div class="footer-column">
+        <p><i class="pi pi-whatsapp"></i>54 9 266 484 9744 -54 9 266 458 2242</p>
+        <p><i class="pi pi-map-marker"></i> Tomas Jofre 1551 San Luis</p>
+        
+      </div>
+      <div class="footer-column">
+       
+        <p><i class="pi pi-instagram"></i>be_haus</p>
+        <p><i class="pi pi-envelope"></i> reservas&#64;behausargentina.com</p>
+      </div>
+      <div class="footer-column">       
+        <p><i class="pi pi-globe"></i>www.behauseargentina.com </p>
+      </div>
+
+    </div>
+  </footer>
+
+ 
+
+<div class='watermarked' data-watermark='BeHaus' ></div>
+
+

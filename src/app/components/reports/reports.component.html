@@ -1,0 +1,59 @@
+
+    <div class="reports">
+      <style>
+        .reports {
+          padding: 20px;
+          font-family: Arial, sans-serif;
+          background-color: #f4f4f9;
+        }
+
+        .charts-container {
+          display: grid;
+          grid-template-columns: 1fr 1fr;
+          grid-template-rows: auto;
+          gap: 20px;
+        }
+
+        .chart-card {
+          background-color: #ffffff;
+          border-radius: 8px;
+          box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+          padding: 20px;
+          text-align: center;
+        }
+
+        .chart-card h3 {
+          margin-bottom: 20px;
+          font-size: 1.2em;
+          color: #333333;
+        }
+
+        canvas {
+          max-width: 100%;
+          height: auto;
+        }
+      </style>
+       
+        <div class="charts-container" style="display: grid; grid-template-columns: 4fr 4fr; grid-template-rows: 4fr 4fr; gap: 20px;">
+          <div class="chart-card">
+            <h3>Ocupacion mensual</h3>
+            <canvas id="occupancyChart" ></canvas>
+          </div>
+
+          <div class="chart-card">
+            <h3>Movimientos de stock</h3>
+            <canvas id="stockChart" ></canvas>
+          </div>
+
+          <div class="chart-card">
+            <h3>Ingresos y egresos</h3>
+            <canvas id="financeChart" ></canvas>
+          </div>
+
+          <div class="chart-card">
+            <h3>Info adicional</h3>
+            <canvas id="additionalChart" ></canvas>
+          </div>
+        </div>
+    </div>
+     

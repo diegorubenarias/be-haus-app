@@ -1,0 +1,108 @@
+<div class="financial-summary">
+  <style>
+    .financial-summary {
+      font-family: Arial, sans-serif;
+      margin: 20px;
+    }
+
+    .summary-container {
+      display: flex;
+      justify-content: space-around;
+      margin-bottom: 20px;
+    }
+
+    .summary-card {
+      background-color: #f8f9fa;
+      border: 1px solid #dee2e6;
+      border-radius: 5px;
+      padding: 20px;
+      text-align: center;
+      width: 30%;
+    }
+
+    .summary-card h3 {
+      margin-bottom: 10px;
+      color: #343a40;
+    }
+
+    .summary-card p {
+      font-size: 1.2em;
+      margin: 0;
+    }
+
+    .positive {
+      color: green;
+    }
+
+    .negative {
+      color: red;
+    }
+
+    .transaction-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 20px;
+    }
+
+    .transaction-table th, .transaction-table td {
+      border: 1px solid #dee2e6;
+      padding: 10px;
+      text-align: left;
+    }
+
+    .transaction-table th {
+      background-color: #f8f9fa;
+      color: #343a40;
+    }
+
+    .transaction-table tbody tr:nth-child(even) {
+      background-color: #f2f2f2;
+    }
+
+    .income {
+      color: green;
+    }
+
+    .expense {
+      color: red;
+    }
+  </style>
+    <div class="summary-container">
+      <div class="summary-card">
+        <h3>Total Ingresos</h3>
+        <p>${{ totalIncome.toFixed(2) }}</p>
+      </div>
+      <div class="summary-card">
+        <h3>Total Gastos</h3>
+        <p>${{ totalExpenses.toFixed(2) }}</p>
+      </div>
+      <div class="summary-card">
+        <h3>Balance</h3>
+        <p [class.positive]="netBalance >= 0" [class.negative]="netBalance < 0">
+          ${{ netBalance.toFixed(2) }}
+        </p>
+      </div>
+    </div>
+
+    <h3>Transacciones</h3>
+    <table class="transaction-table">
+      <thead>
+        <tr>
+          <th>Dia</th>
+          <th>Descripcion</th>
+          <th>Tipo</th>
+          <th>Monto</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let transaction of transactions">
+          <td>{{ transaction.date }}</td>
+          <td>{{ transaction.description }}</td>
+          <td>{{ transaction.type }}</td>
+          <td [class.income]="transaction.type === 'Income'" [class.expense]="transaction.type === 'Expense'">
+            ${{ transaction.amount.toFixed(2) }}
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>

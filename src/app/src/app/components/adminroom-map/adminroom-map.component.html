@@ -1,0 +1,217 @@
+<div class="admin-dashboard-container">
+  <style>
+    .admin-dashboard-container {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+      padding: 20px;
+      font-family: Arial, sans-serif;
+    }
+
+    .stats-panel {
+      display: flex;
+      justify-content: space-around;
+      background-color: #f8f9fa;
+      padding: 10px;
+      border-radius: 8px;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    }
+
+    .stat-item {
+      text-align: center;
+    }
+
+    .stat-item h3 {
+      margin: 0;
+      font-size: 1.2em;
+      color: #343a40;
+    }
+
+    .stat-item p {
+      margin: 5px 0 0;
+      font-size: 1em;
+      color: #495057;
+    }
+
+    .room-map {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    .room-card {
+      flex: 1 1 calc(25% - 10px);
+      background-color: #ffffff;
+      border: 1px solid #dee2e6;
+      border-radius: 8px;
+      padding: 10px;
+      text-align: center;
+      cursor: pointer;
+      transition: transform 0.2s;
+    }
+
+    .room-card:hover {
+      transform: scale(1.05);
+    }
+
+    .room-card.occupied {
+      background-color: #f8d7da;
+      border-color: #f5c6cb;
+    }
+
+    .room-card h4 {
+      margin: 0;
+      font-size: 1.2em;
+      color: #343a40;
+    }
+
+    .room-card p {
+      margin: 5px 0 0;
+      font-size: 1em;
+      color: #495057;
+    }
+
+    .room-modal {
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      background-color: #ffffff;
+      border: 1px solid #dee2e6;
+      border-radius: 8px;
+      padding: 20px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      z-index: 1000;
+    }
+
+    .modal-content {
+      max-width: 500px;
+      margin: auto;
+    }
+
+    .modal-content h3, .modal-content h4 {
+      margin: 0 0 10px;
+      font-size: 1.2em;
+      color: #343a40;
+    }
+
+    .modal-content p, .modal-content ul {
+      margin: 5px 0;
+      font-size: 1em;
+      color: #495057;
+    }
+
+    .modal-content label {
+      display: block;
+      margin: 10px 0;
+    }
+
+    .modal-content select {
+      width: 100%;
+      padding: 5px;
+      border: 1px solid #dee2e6;
+      border-radius: 4px;
+    }
+
+    .modal-content button {
+      margin: 10px 5px 0;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 4px;
+      background-color: #007bff;
+      color: #ffffff;
+      cursor: pointer;
+      transition: background-color 0.2s;
+    }
+
+    .modal-content button:hover {
+      background-color: #0056b3;
+    }
+  </style>
+  <!-- Statistics Panel -->
+  <div class="stats-panel">
+    <div class="stat-item">
+      <h3>Ocupacion</h3>
+      <p>{{ occupancyRate }}%</p>
+    </div>
+    <div class="stat-item">
+      <h3>Disponibilidad</h3>
+      <p>{{ availableRooms }}</p>
+    </div>
+    <div class="stat-item">
+      <h3>Habitaciones Ocupadas</h3>
+      <p>{{ occupiedRooms }}</p>
+    </div>
+  </div>
+
+  <!-- Room Map -->
+  <div class="room-map">
+    <div *ngFor="let room of rooms" 
+         class="room-card" 
+         [class.occupied]="room.isOccupied" 
+         (click)="openRoomModal(room)">
+      <h4>H {{ room.number }}</h4>
+      <p>{{ room.isOccupied ? 'Ocupada' : 'Disponible' }}</p>
+    </div>
+  </div>
+
+  <!-- Sidebar Filters -->
+ 
+
+  <!-- Room Modal -->
+  <div *ngIf="selectedRoom" class="room-modal">
+    <div class="modal-content">
+      <h3>Habitacion {{ selectedRoom.number }}</h3>
+      <p>Estado: {{ selectedRoom.isOccupied ? 'Ocupada' : 'Disponible' }}</p>
+
+      <div *ngIf="selectedRoom.isOccupied">
+        <h4>DatosOcupante</h4>
+        <p>Nombre: {{ selectedRoom.guest.name }}</p>
+        <p>Check-in: {{ selectedRoom.guest.checkInDate }}</p>
+        <p>Check-out: {{ selectedRoom.guest.checkOutDate }}</p>
+      </div>
+
+      <h4>Futuras Reservaciones</h4>
+      <ul>
+        <li *ngFor="let reservation of selectedRoom.futureReservations">
+          {{ reservation.guestName }} - {{ reservation.startDate }} a {{ reservation.endDate }}
+        </li>
+      </ul>
+
+      <div *ngIf="selectedRoom.isOccupied">
+      <h4>Consumos Frigobar</h4>
+      <ul>
+        <li>
+          producto: Coca Cola - cantidad: 2 - Fecha: 25-02
+        </li>
+      </ul>
+    </div>
+
+      <h4>Editar Habitacion</h4>
+      <label>
+        Status:
+        <select [(ngModel)]="selectedRoom.isOccupied">
+          <option [value]="true">Ocupada</option>
+          <option [value]="false">Disponible</option>
+        </select>
+      </label>
+
+      <div *ngIf="selectedRoom.isOccupied">
+      <h4>Pago</h4>
+      <label>
+        Forma de Pago:
+        <select>
+          <option [value]="true">Efectivo</option>
+          <option [value]="false">Tarjeta</option>
+          <option [value]="false">Cuenta Corriente</option>
+        </select>
+      </label>
+    </div>
+
+      <button (click)="saveRoomChanges(selectedRoom)">Guardar Cambios</button>
+      <button (click)="closeRoomModal()">Cerrar</button>
+    </div>
+  </div>
+</div>
+
+

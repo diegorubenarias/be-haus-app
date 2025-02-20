@@ -1,0 +1,59 @@
+import { CommonModule, DOCUMENT } from '@angular/common';
+import { AfterContentInit, AfterViewChecked, AfterViewInit, Component, inject, Renderer2, ViewEncapsulation } from '@angular/core';
+import { FormsModule } from '@angular/forms';	
+import { MatInputModule } from '@angular/material/input';
+import { AuthService } from '../../services/auth.service';
+import { Router } from '@angular/router';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { BrowserModule } from '@angular/platform-browser';
+
+@Component({
+  selector: 'app-login',
+  standalone: true,
+  imports: [
+    CommonModule,
+    FormsModule,
+    MatInputModule,
+    
+  
+  ],
+  templateUrl: './login.component.html',
+  styleUrl: './login.component.scss',
+  encapsulation: ViewEncapsulation.None,
+  providers: [BrowserModule]
+})
+export class LoginComponent implements AfterViewInit{
+ 
+
+  authService = inject(AuthService);
+  router = inject(Router);
+  _renderer2 = inject(Renderer2);
+  _document = inject(DOCUMENT);
+
+  email: string | null = null;
+  password: string | null = null;;
+
+  ngAfterViewInit(): void {
+    let script = this._renderer2.createElement('script');
+    script.text = `
+        {
+          Array.from(document.querySelectorAll('.watermarked')).forEach(function(el) {
+        el.dataset.watermark = (el.dataset.watermark + ' ').repeat(500);
+       
+    });
+        }
+    `;
+
+    this._renderer2.appendChild(this._document.body, script);
+  }
+
+  onSubmit() {
+    if (this.email && this.password) {
+      const user = this.authService.login(this.email, this.password) as { username: string,  rol: string };
+      this.router.navigate([user.rol]);
+    } else {
+      console.error('Email and password must not be null');
+    }
+  }
+
+}

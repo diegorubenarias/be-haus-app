@@ -29,7 +29,14 @@
               {
                 "glob": "**/*",
                 "input": "public"
-              }
+              },             
+
+             {
+              "glob": "rooms.json",
+              "input": "./",
+              "output": "./assets/"
+             }
+        
             ],
             "styles": [
               "src/styles.scss"
