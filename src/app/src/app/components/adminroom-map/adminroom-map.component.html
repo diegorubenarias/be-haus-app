@@ -148,14 +148,33 @@
   <div class="building-container">
     <div class="building-card" *ngFor="let building of buildings">
       <h4>{{ building.title }}</h4>
-      <div class="room-grid" [class.two-columns]="building.name === 'beHause'"> 
+      <div class="room-grid" [class.two-columns]="true"> 
         <ng-container *ngFor="let room of rooms">
           <div *ngIf="room.building === building.name" 
                class="room-card" 
                [class.occupied]="room.isOccupied" 
+              [ngStyle]="{'background-color': room.type === 'executive' ? '#d1e7dd' : room.type === 'studio' ? 
+              'rgb(156 209 233)' : room.type === 'loft suite' ? 
+              'rgb(233 220 161)' : room.type === 'family comfort' ? 'rgb(227 187 140)' : '#ffffff'}"
                (click)="openRoomModal(room)">
             <h4>{{ room.roomNumber }}</h4>
             <p>{{ room.isOccupied ? 'Ocupada' : 'Disponible' }}</p>
+            <div class="room-capacity-icons">
+              <i *ngFor="let icon of [].constructor(room.capacity)" class="pi pi-user" style="font-size: 1rem; color: gray"></i>
+            </div>
+            <style>
+              .room-capacity-icons {
+                margin-top: 10px;
+                display: flex;
+                justify-content: center;
+                gap: 5px;
+              }
+
+              .person-icon {
+                font-size: 1rem;
+                color: gray;
+              }
+            </style>
           </div>
         </ng-container>
       </div>
@@ -241,15 +260,7 @@
         </li>
       </ul>
 
-      <div *ngIf="selectedRoom.isOccupied">
-      <h4>Consumos Frigobar</h4>
-      <ul>
-        <li>
-          producto: Coca Cola - cantidad: 2 - Fecha: 25-02
-        </li>
-      </ul>
-    </div>
-
+     
       <h4>Editar Habitacion</h4>
       <label>
         Status:

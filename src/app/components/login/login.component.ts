@@ -49,8 +49,13 @@ export class LoginComponent implements AfterViewInit{
 
   onSubmit() {
     if (this.email && this.password) {
-      const user = this.authService.login(this.email, this.password) as { username: string,  rol: string };
-      this.router.navigate([user.rol]);
+      this.authService.login(this.email, this.password)
+      .subscribe((user: any) => {
+        if (user) {
+          localStorage.setItem('user', JSON.stringify(user));          
+          this.router.navigate([user.role]);
+        }
+      });
     } else {
       console.error('Email and password must not be null');
     }

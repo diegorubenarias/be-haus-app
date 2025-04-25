@@ -28,7 +28,7 @@ export class AdminroomMapComponent implements OnInit {
   filterEndDate = '';
   filterStartDate = '';
   availabeRooms = 0;
-  buildings = [{ name: 'beHause', title: 'BeHause'}, { name: 'dessau6', title: 'Dessau 6' }, 
+  buildings = [{ name: 'beHause', title: 'Be Haus'}, { name: 'dessau6', title: 'Dessau 6' }, 
     { name: 'dessau4', title: 'Desau 4' }, { name: 'miro3', title: 'Miro 3' }]; 
 
   applyFilters() {
