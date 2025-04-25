@@ -2,13 +2,15 @@ import { CommonModule } from '@angular/common';
 import { Component, inject, OnInit, ViewEncapsulation } from '@angular/core';
 import { RoomService } from '../../../../services/room.service';
 import { FormsModule } from '@angular/forms';
+import { PanelModule } from 'primeng/panel';
 
 @Component({
   selector: 'app-adminroom-map',
   standalone: true,
   imports: [
     CommonModule,
-    FormsModule
+    FormsModule,
+    PanelModule
   ],
   templateUrl: './adminroom-map.component.html',
   styleUrl: './adminroom-map.component.scss',
@@ -26,6 +28,8 @@ export class AdminroomMapComponent implements OnInit {
   filterEndDate = '';
   filterStartDate = '';
   availabeRooms = 0;
+  buildings = [{ name: 'beHause', title: 'BeHause'}, { name: 'dessau6', title: 'Dessau 6' }, 
+    { name: 'dessau4', title: 'Desau 4' }, { name: 'miro3', title: 'Miro 3' }]; 
 
   applyFilters() {
     if (this.filterCriteria === 'all') {
@@ -41,7 +45,15 @@ export class AdminroomMapComponent implements OnInit {
 
   ngOnInit(): void {
    
-      this.rooms = this.roomService.getRooms();
+      this.roomService.getRooms().subscribe((data: any) => {
+        this.rooms = data.sort((a: any, b: any) => {
+          if (a.building === b.building) {
+            return a.roomNumber - b.roomNumber;
+          }
+          return a.building.localeCompare(b.building);
+        });
+
+      });
   
   }
   get occupancyRate() {

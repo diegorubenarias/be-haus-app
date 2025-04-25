@@ -37,6 +37,7 @@
       display: flex;
       flex-wrap: wrap;
       gap: 10px;
+      justify-content: space-around;
     }
 
     .room-card {
@@ -144,15 +145,77 @@
     </div>
   </div>
 
-  <!-- Room Map -->
-  <div class="room-map">
-    <div *ngFor="let room of rooms" 
-         class="room-card" 
-         [class.occupied]="room.isOccupied" 
-         (click)="openRoomModal(room)">
-      <h4>H {{ room.number }}</h4>
-      <p>{{ room.isOccupied ? 'Ocupada' : 'Disponible' }}</p>
+  <div class="building-container">
+    <div class="building-card" *ngFor="let building of buildings">
+      <h4>{{ building.title }}</h4>
+      <div class="room-grid" [class.two-columns]="building.name === 'beHause'"> 
+        <ng-container *ngFor="let room of rooms">
+          <div *ngIf="room.building === building.name" 
+               class="room-card" 
+               [class.occupied]="room.isOccupied" 
+               (click)="openRoomModal(room)">
+            <h4>{{ room.roomNumber }}</h4>
+            <p>{{ room.isOccupied ? 'Ocupada' : 'Disponible' }}</p>
+          </div>
+        </ng-container>
+      </div>
     </div>
+  </div>
+
+  <style>
+    .building-container {
+      display: flex;
+      justify-content: space-between;
+      gap: 10px;
+      width: 100%;
+    }
+
+    .building-card {
+      flex: 1;
+      background-color: #ffffff;
+      border: 1px solid #dee2e6;
+      border-radius: 8px;
+      padding: 10px;
+      text-align: center;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    }
+
+    .room-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 10px;
+    }
+
+    .room-grid.two-columns {
+      grid-template-columns: 1fr 1fr;
+    }
+  </style>
+
+  <!-- Room Map -->
+  <div class="room-map" >
+    
+  
+
+  <style>
+    .card-container {
+      display: flex;
+      justify-content: space-between;
+      gap: 10px;
+    }
+
+    .card {
+      flex: 1;
+      background-color: #ffffff;
+      border: 1px solid #dee2e6;
+      border-radius: 8px;
+      padding: 10px;
+      text-align: center;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    }
+  </style>
+    
+    
+    
   </div>
 
   <!-- Sidebar Filters -->
