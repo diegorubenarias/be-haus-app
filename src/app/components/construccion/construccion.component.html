@@ -1,0 +1,61 @@
+<div class="maintenance-container">
+    <div class="maintenance-content">
+        <img src="https://cdn-icons-png.flaticon.com/512/564/564445.png" alt="Mantenimiento" class="maintenance-icon">
+        <h1>¡Estamos en mantenimiento!</h1>
+        <p>Estamos trabajando para mejorar tu experiencia.<br>
+            Vuelve a visitarnos pronto.</p>
+        <div class="spinner"></div>
+    </div>
+</div>
+
+<style>
+.maintenance-container {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(135deg, #e0eafc 0%, #cfdef3 100%);
+}
+
+.maintenance-content {
+    background: #fff;
+    padding: 2.5rem 2rem;
+    border-radius: 18px;
+    box-shadow: 0 8px 32px rgba(60, 60, 120, 0.15);
+    text-align: center;
+    max-width: 350px;
+}
+
+.maintenance-icon {
+    width: 80px;
+    margin-bottom: 1.2rem;
+    opacity: 0.9;
+}
+
+h1 {
+    font-size: 2rem;
+    color: #2d3a4b;
+    margin-bottom: 0.7rem;
+    font-weight: 700;
+}
+
+p {
+    color: #4a5a6a;
+    font-size: 1.1rem;
+    margin-bottom: 1.5rem;
+}
+
+.spinner {
+    margin: 0 auto;
+    width: 36px;
+    height: 36px;
+    border: 4px solid #b3c6e0;
+    border-top: 4px solid #4a90e2;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    to { transform: rotate(360deg); }
+}
+</style>
