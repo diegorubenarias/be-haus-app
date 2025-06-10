@@ -32,6 +32,7 @@ export class LoginComponent implements AfterViewInit{
 
   email: string | null = null;
   password: string | null = null;;
+  showInvalidToast: boolean = false;
 
   ngAfterViewInit(): void {
     let script = this._renderer2.createElement('script');
@@ -55,6 +56,8 @@ export class LoginComponent implements AfterViewInit{
           localStorage.setItem('user', JSON.stringify(user));          
           //this.router.navigate([user.role]);
           this.router.navigate(["construccion"]);
+        } else {
+          this.showInvalidToast = true;
         }
       });
     } else {
