@@ -7,6 +7,8 @@ import { ManageStockComponent } from './components/manage-stock/manage-stock.com
 import { FinancialComponent } from './components/financial/financial.component';
 import { ReportsComponent } from './components/reports/reports.component';
 import { RoomListComponent } from './components/room-list/room-list.component';
+import { LimpiezaDashboardComponent } from './components/limpieza-dashboard/limpieza-dashboard.component';
+import { ConstruccionComponent } from './components/construccion/construccion.component';
 
 export const routes: Routes = [
     {path: "", component: LoginComponent},
@@ -15,8 +17,11 @@ export const routes: Routes = [
         {path: "stock", component: ManageStockComponent},
         {path: "financial", component: FinancialComponent},
         {path: "reports", component: ReportsComponent},
-        {path: "rooms", component: RoomListComponent}
+        {path: "rooms", component: RoomListComponent},
+        {path: "limpieza", component: LimpiezaDashboardComponent}
     ]},
-    {path: "user", component: UserViewComponent}
+    {path: "limpieza", component: LimpiezaDashboardComponent},
+    {path: "user", component: UserViewComponent},
+    {path: "construccion", component: ConstruccionComponent}
 
 ];
