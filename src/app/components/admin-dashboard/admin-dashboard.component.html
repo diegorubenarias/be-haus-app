@@ -21,12 +21,14 @@
         
             <ul class="menu-options">
               <li class="menu-item" (click)="navigateTo('/admin')">Inicio</li>
+              <span *ngIf="user.role === 'admin'">
               <li class="menu-item" (click)="navigateTo('/admin/stock')">Manejo de stock</li>
               <li class="menu-item" (click)="navigateTo('/admin/financial')">Resumen Financiero</li>
               <li class="menu-item" (click)="navigateTo('/admin/reports')">Reportes</li>
               <li class="menu-item" (click)="navigateTo('/admin/rooms')">Administrar habitaciones</li>
               <li class="menu-item" (click)="navigateTo('/admin/payment-methods')">Formas De Pago</li>
               <li class="menu-item" (click)="navigateTo('/admin/frequent-customers')">Clientes Frecuentes</li>
+                </span>
             </ul>
       
       </aside>

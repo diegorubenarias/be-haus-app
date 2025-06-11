@@ -1,16 +1,22 @@
-import { DOCUMENT } from '@angular/common';
-import { AfterViewInit, Component, inject, Renderer2, ViewEncapsulation } from '@angular/core';
+import { CommonModule, DOCUMENT } from '@angular/common';
+import { AfterViewInit, Component, inject, OnInit, Renderer2, ViewEncapsulation } from '@angular/core';
 import { Router, RouterOutlet } from '@angular/router';
 
 @Component({
   selector: 'app-admin-dashboard',
   standalone: true,
-  imports: [RouterOutlet],
+  imports: [RouterOutlet,
+    CommonModule
+  ],
   templateUrl: './admin-dashboard.component.html',
   styleUrl: './admin-dashboard.component.scss',
   encapsulation: ViewEncapsulation.None
 })
-export class AdminDashboardComponent implements AfterViewInit {
+export class AdminDashboardComponent implements AfterViewInit, OnInit {
+  user: any = {};
+  ngOnInit(): void {
+    this.user = JSON.parse(localStorage.getItem('user') || '{}');
+  }
 
   router = inject(Router);
    _renderer2 = inject(Renderer2);
