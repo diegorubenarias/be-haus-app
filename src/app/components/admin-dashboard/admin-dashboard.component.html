@@ -20,7 +20,7 @@
         <button class="filter-button">Aplicar filtros</button>
         
             <ul class="menu-options">
-              <li class="menu-item" (click)="navigateTo('/admin')">Inicio</li>
+              <li class="menu-item" (click)="navigateTo('/admin')" *ngIf="user.role != 'mucama'">Inicio</li>
               <span *ngIf="user.role === 'admin'">
               <li class="menu-item" (click)="navigateTo('/admin/stock')">Manejo de stock</li>
               <li class="menu-item" (click)="navigateTo('/admin/financial')">Resumen Financiero</li>
@@ -29,6 +29,7 @@
               <li class="menu-item" (click)="navigateTo('/admin/payment-methods')">Formas De Pago</li>
               <li class="menu-item" (click)="navigateTo('/admin/frequent-customers')">Clientes Frecuentes</li>
                 </span>
+              <li class="menu-item" (click)="navigateTo('/limpieza')" *ngIf="user.role == 'mucama'">Servicio</li>
             </ul>
       
       </aside>
