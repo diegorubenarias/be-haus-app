@@ -269,7 +269,18 @@
           <option [value]="false">Disponible</option>
         </select>
       </label>
-
+      <label>
+        Nombre del huésped:
+        <input type="text" [(ngModel)]="selectedRoom.reservationGuestName" placeholder="Nombre del huésped" />
+      </label>
+      <label>
+        Fecha de inicio:
+        <input type="date" [(ngModel)]="selectedRoom.reservationStartDate" />
+      </label>
+      <label>
+        Fecha de fin:
+        <input type="date" [(ngModel)]="selectedRoom.reservationEndDate" />
+      </label>
       <div *ngIf="selectedRoom.isOccupied">
       <h4>Pago</h4>
       <label>
