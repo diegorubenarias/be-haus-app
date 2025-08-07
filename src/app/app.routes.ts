@@ -11,7 +11,7 @@ import { LimpiezaDashboardComponent } from './components/limpieza-dashboard/limp
 import { ConstruccionComponent } from './components/construccion/construccion.component';
 
 export const routes: Routes = [
-    {path: "", component: ConstruccionComponent},
+    {path: "", component: LoginComponent},
     {path: "admin", component: AdminDashboardComponent, children: [
         {path: "", component: AdminroomMapComponent},
         {path: "stock", component: ManageStockComponent},
