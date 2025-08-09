@@ -156,9 +156,10 @@
               [ngStyle]="{'background-color': room.type === 'executive' ? '#d1e7dd' : room.type === 'studio' ? 
               'rgb(156 209 233)' : room.type === 'loft suite' ? 
               'rgb(233 220 161)' : room.type === 'family comfort' ? 'rgb(227 187 140)' : '#ffffff'}"
-               (click)="openRoomModal(room)">
+               (click)="openRoomModal(room)"
+               >
             <h4>{{ room.roomNumber }}</h4>
-            <p>{{ room.isOccupied ? 'Ocupada' : 'Disponible' }}</p>
+            <p [ngStyle]="{'color': room.isOccupied ? 'red' : 'gray'}">{{ room.isOccupied ? 'Ocupada' : 'Disponible' }}</p>
             <div class="room-capacity-icons">
               <i *ngFor="let icon of [].constructor(room.capacity)" class="pi pi-user" style="font-size: 1rem; color: gray"></i>
             </div>
