@@ -30,6 +30,7 @@
               <li class="menu-item" (click)="navigateTo('/admin/frequent-customers')">Clientes Frecuentes</li>
                 </span>
               <li class="menu-item" (click)="navigateTo('/limpieza')" *ngIf="user.role == 'mucama'">Servicio</li>
+              <li class="menu-item" (click)="navigateTo('/limpieza')" *ngIf="user.role == 'admin'">Servicio</li>
             </ul>
       
       </aside>
