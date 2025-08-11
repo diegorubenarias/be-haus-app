@@ -3,39 +3,31 @@
       <h1 class="dashboard-title"><span style="color: #ed3280;">Be</span><span style="font-weight: bold;">Haus</span></h1>
       <button class="logout-button">Cerrar sesión</button>
     </header>
-  
+
     <div class="dashboard-main">
-      <aside class="dashboard-sidebar">
-        <h2>Filtros</h2>
-        <label for="date-filter">Fecha:</label>
-        <input type="date" id="date-filter" />
-  
-        <label for="status-filter">Estado:</label>
-        <select id="status-filter">
-          <option value="all">Todos</option>
-          <option value="reserved">Reservado</option>
-          <option value="available">Disponible</option>
-        </select>
-  
-        <button class="filter-button">Aplicar filtros</button>
-        
-            <ul class="menu-options">
-              <li class="menu-item" (click)="navigateTo('/admin')" *ngIf="user.role != 'mucama'">Inicio</li>
-              <span *ngIf="user.role === 'admin'">
+      <aside class="dashboard-sidebar" [class.collapsed]="isSidebarCollapsed">
+        <button class="collapse-btn" (click)="isSidebarCollapsed = !isSidebarCollapsed">
+          {{ isSidebarCollapsed ? '▶' : '◀' }}
+        </button>
+        <div *ngIf="!isSidebarCollapsed">
+          
+          <ul class="menu-options">
+            <li class="menu-item" (click)="navigateTo('/admin')" *ngIf="user.role != 'mucama'">Inicio</li>
+            <span *ngIf="user.role === 'admin'">
               <li class="menu-item" (click)="navigateTo('/admin/stock')">Manejo de stock</li>
               <li class="menu-item" (click)="navigateTo('/admin/financial')">Resumen Financiero</li>
               <li class="menu-item" (click)="navigateTo('/admin/reports')">Reportes</li>
               <li class="menu-item" (click)="navigateTo('/admin/rooms')">Administrar habitaciones</li>
               <li class="menu-item" (click)="navigateTo('/admin/payment-methods')">Formas De Pago</li>
               <li class="menu-item" (click)="navigateTo('/admin/frequent-customers')">Clientes Frecuentes</li>
-                </span>
-              <li class="menu-item" (click)="navigateTo('/limpieza')" *ngIf="user.role == 'mucama'">Servicio</li>
-              <li class="menu-item" (click)="navigateTo('/limpieza')" *ngIf="user.role == 'admin'">Servicio</li>
-              <!-- #region 
-               reportes panel de control
-               -->
-            </ul>
-      
+            </span>
+            <li class="menu-item" (click)="navigateTo('/limpieza')" *ngIf="user.role == 'mucama'">Servicio</li>
+            <li class="menu-item" (click)="navigateTo('/limpieza')" *ngIf="user.role == 'admin'">Servicio</li>
+            <!-- #region 
+              reportes panel de control
+            -->
+          </ul>
+        </div>
       </aside>
       
   

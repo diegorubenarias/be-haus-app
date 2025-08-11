@@ -14,6 +14,7 @@ import { Router, RouterOutlet } from '@angular/router';
 })
 export class AdminDashboardComponent implements AfterViewInit, OnInit {
   user: any = {};
+  isSidebarCollapsed = true;
   ngOnInit(): void {
     this.user = JSON.parse(localStorage.getItem('user') || '{}');
   }

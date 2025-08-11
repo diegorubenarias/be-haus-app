@@ -1,1 +1,36 @@
-<p>calendario works!</p>
+<div class="calendar-container">
+    <div class="month-tabs">
+        <button *ngFor="let month of months; let i = index"
+                        [class.active]="i === selectedMonthIndex"
+                        (click)="selectMonth(i)">
+            {{ month }}
+        </button>
+    </div>
+
+    <table class="calendar-table">
+        <thead>
+            <tr>
+                <th></th>
+                <ng-container *ngFor="let day of daysInMonth">
+                    <th colspan="2" class="day-header">{{ day }}</th>
+                </ng-container>
+            </tr>
+            <tr>
+                <th></th>
+                <ng-container *ngFor="let day of daysInMonth">
+                    <th class="half-day-header">m</th>
+                    <th class="half-day-header">t</th>
+                </ng-container>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let room of rooms">
+                <td class="room-name">{{ room.roomNumber }}</td>
+                <ng-container *ngFor="let day of daysInMonth">
+                    <td class="cell"></td>
+                    <td class="cell"></td>
+                </ng-container>
+            </tr>
+        </tbody>
+    </table>
+</div>
