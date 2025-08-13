@@ -9,11 +9,13 @@ import { ReportsComponent } from './components/reports/reports.component';
 import { RoomListComponent } from './components/room-list/room-list.component';
 import { LimpiezaDashboardComponent } from './components/limpieza-dashboard/limpieza-dashboard.component';
 import { ConstruccionComponent } from './components/construccion/construccion.component';
+import { CalendarioComponent } from './components/calendario/calendario.component';
 
 export const routes: Routes = [
     {path: "", component: LoginComponent},
     {path: "admin", component: AdminDashboardComponent, children: [
-        {path: "", component: AdminroomMapComponent},
+        //{path: "", component: AdminroomMapComponent},
+        {path: "", component: CalendarioComponent},
         {path: "stock", component: ManageStockComponent},
         {path: "financial", component: FinancialComponent},
         {path: "reports", component: ReportsComponent},

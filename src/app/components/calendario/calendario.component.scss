@@ -1,3 +1,58 @@
 .cell {
     background-color: #ffffff;
 }
+.active {
+    background-color: red;
+}
+.holiday {
+    background-color: red;
+}
+.building-executive {
+    color: #d1e7dd;
+}
+.building-studio {
+    color: rgb(156 209 233);
+}
+.building-loft suite {
+    color: rgb(233 220 161);
+}
+.building-family confort {
+    color: rgb(227 187 140);
+}
+.modal-backdrop {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(0,0,0,0.5);
+    z-index: 1000;
+}
+
+.modal {
+    position: fixed;
+    top: 0; left: 0;
+    width: 100vw; height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1010;
+}
+
+.modal-content {
+    background: #fff;
+    padding: 2rem;
+    border-radius: 8px;
+    min-width: 320px;
+    max-width: 90vw;
+    box-shadow: 0 4px 24px rgba(0,0,0,0.2);
+    position: relative;
+}
+
+.close {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    font-size: 2rem;
+    cursor: pointer;
+}

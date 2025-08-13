@@ -12,25 +12,57 @@
             <tr>
                 <th></th>
                 <ng-container *ngFor="let day of daysInMonth">
-                    <th colspan="2" class="day-header">{{ day }}</th>
+                    <th colspan="2" class="day-header" [class.holiday]="isHoliday(day)">{{ day }}</th>
                 </ng-container>
             </tr>
             <tr>
                 <th></th>
                 <ng-container *ngFor="let day of daysInMonth">
-                    <th class="half-day-header">m</th>
-                    <th class="half-day-header">t</th>
+                    <th class="half-day-header"  [class.holiday]="isHoliday(day)">m</th>
+                    <th class="half-day-header"  [class.holiday]="isHoliday(day)">t</th>
                 </ng-container>
             </tr>
         </thead>
         <tbody>
             <tr *ngFor="let room of rooms">
-                <td class="room-name">{{ room.roomNumber }}</td>
+                <td class="room-name" [ngClass]="'building-' + room.type">{{ room.roomNumber }}</td>
                 <ng-container *ngFor="let day of daysInMonth">
-                    <td class="cell"></td>
-                    <td class="cell"></td>
+                    <td class="cell" (click)="openReservationModal()"  [class.holiday]="isHoliday(day)"></td>
+                    <td class="cell"  (click)="openReservationModal()"  [class.holiday]="isHoliday(day)"></td>
                 </ng-container>
             </tr>
         </tbody>
     </table>
+</div>
+
+<!-- Modal -->
+<div class="modal-backdrop" *ngIf="showModal" (click)="closeReservationModal()"></div>
+<div class="modal" *ngIf="showModal">
+    <div class="modal-content" (click)="$event.stopPropagation()">
+        <span class="close" (click)="closeReservationModal()">&times;</span>
+        <h2>Reservar habitación</h2>
+        <!-- Aquí puedes agregar el formulario o contenido del modal -->
+        <form >
+            <div>
+                <label for="room">Habitación:</label>
+                <input id="room" type="text" readonly>
+            </div>
+            <div>
+                <label for="date">Fecha:</label>
+                <input id="date" type="text" readonly>
+            </div>
+            <div>
+                <label for="halfDay">Turno:</label>
+                <select id="halfDay"  name="halfDay">
+                    <option value="m">Mañana</option>
+                    <option value="t">Tarde</option>
+                </select>
+            </div>
+            <div>
+                <label for="name">Nombre:</label>
+                <input id="name" type="text" name="name" required>
+            </div>
+            <button type="submit">Reservar</button>
+        </form>
+    </div>
 </div>
