@@ -12,7 +12,8 @@ import { ConstruccionComponent } from './components/construccion/construccion.co
 import { CalendarioComponent } from './components/calendario/calendario.component';
 
 export const routes: Routes = [
-    {path: "", component: LoginComponent},
+   // {path: "", component: LoginComponent},
+    {path: "", component: ConstruccionComponent},
     {path: "admin", component: AdminDashboardComponent, children: [
         //{path: "", component: AdminroomMapComponent},
         {path: "", component: CalendarioComponent},

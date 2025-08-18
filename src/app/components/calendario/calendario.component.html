@@ -48,21 +48,23 @@
                 <input id="room" type="text" readonly>
             </div>
             <div>
-                <label for="date">Fecha:</label>
+                <label for="date">Fecha desde:</label>
+                <input id="date" type="text" readonly>
+                <label for="date">Fecha hasta:</label>
                 <input id="date" type="text" readonly>
             </div>
             <div>
-                <label for="halfDay">Turno:</label>
+                <label for="halfDay">Late checkout:</label>
                 <select id="halfDay"  name="halfDay">
-                    <option value="m">Mañana</option>
-                    <option value="t">Tarde</option>
+                    <option value="m">no</option>
+                    <option value="t">si</option>
                 </select>
             </div>
             <div>
                 <label for="name">Nombre:</label>
                 <input id="name" type="text" name="name" required>
             </div>
-            <button type="submit">Reservar</button>
+            <button type="submit">Aceptar</button>
         </form>
     </div>
 </div>
