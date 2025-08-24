@@ -54,7 +54,7 @@ export class LoginComponent implements AfterViewInit{
       .subscribe((user: any) => {
         if (user) {
           localStorage.setItem('user', JSON.stringify(user));          
-          this.router.navigate(['admin']);
+          //this.router.navigate(['admin']);
           //this.router.navigate(["construccion"]);
         } else {
           this.showInvalidToast = true;
