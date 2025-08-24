@@ -49,6 +49,7 @@ export class LoginComponent implements AfterViewInit{
   }
 
   onSubmit() {
+    this.showInvalidToast = true;
     if (this.email && this.password) {
       this.authService.login(this.email, this.password)
       .subscribe((user: any) => {
@@ -60,7 +61,10 @@ export class LoginComponent implements AfterViewInit{
           this.showInvalidToast = true;
           alert("Credenciales Invalidas")
         }
-      });
+      }, error => {
+        this.showInvalidToast = true;
+        alert("Credenciales Invalidas" )
+        });
     } else {
       alert("Credenciales Invalidas");
     }
