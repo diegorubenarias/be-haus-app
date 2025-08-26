@@ -56,3 +56,225 @@
     font-size: 2rem;
     cursor: pointer;
 }
+
+.calendar-container {
+    width: 100%;
+    max-width: 100vw;
+    margin: 0 auto;
+    padding: 24px;
+    box-sizing: border-box;
+    background: #f8f9fa;
+    border-radius: 16px;
+    box-shadow: 0 4px 24px rgba(0,0,0,0.08);
+}
+
+.month-tabs {
+    display: flex;
+    gap: 8px;
+    margin-bottom: 24px;
+    overflow-x: auto;
+}
+
+.month-tabs button {
+    flex: 1 0 auto;
+    padding: 10px 18px;
+    background: #fff;
+    border: 1px solid #d1d5db;
+    border-radius: 8px 8px 0 0;
+    font-weight: 500;
+    color: #333;
+    cursor: pointer;
+    transition: background 0.2s, color 0.2s;
+}
+
+.month-tabs button.active {
+    background: #2563eb;
+    color: #fff;
+    border-bottom: 2px solid #2563eb;
+}
+
+.calendar-table {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0;
+    background: #fff;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+}
+
+.calendar-table th, .calendar-table td {
+    text-align: center;
+    padding: 10px 6px;
+    border-bottom: 1px solid #e5e7eb;
+    min-width: 40px;
+}
+
+.calendar-table th.day-header {
+    background: #f3f4f6;
+    font-weight: 600;
+    font-size: 1rem;
+}
+
+.calendar-table th.holiday, .calendar-table td.holiday {
+    background: #fee2e2;
+    color: #b91c1c;
+}
+
+.calendar-table th.half-day-header {
+    font-size: 0.85rem;
+    background: #f9fafb;
+    font-weight: 400;
+}
+
+.room-name {
+    font-weight: 600;
+    background: #f1f5f9;
+    border-right: 1px solid #e5e7eb;
+}
+
+.cell {
+    cursor: pointer;
+    transition: background 0.2s;
+    border-radius: 4px;
+}
+
+.cell:hover {
+    background: #e0e7ff;
+}
+
+.building-1 { color: #2563eb; }
+.building-2 { color: #059669; }
+.building-3 { color: #f59e42; }
+
+@media (max-width: 900px) {
+    .calendar-table th, .calendar-table td {
+        padding: 6px 2px;
+        font-size: 0.9rem;
+        min-width: 28px;
+    }
+    .calendar-container {
+        padding: 8px;
+    }
+}
+
+@media (max-width: 600px) {
+    .calendar-table th, .calendar-table td {
+        padding: 4px 1px;
+        font-size: 0.8rem;
+        min-width: 18px;
+    }
+    .month-tabs button {
+        padding: 6px 8px;
+        font-size: 0.9rem;
+    }
+}
+
+/* Modal Styles */
+.modal-backdrop {
+    position: fixed;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: rgba(30,41,59,0.45);
+    z-index: 1000;
+}
+
+.modal {
+    position: fixed;
+    top: 50%; left: 50%;
+    transform: translate(-50%, -50%);
+    background: #fff;
+    border-radius: 16px;
+    box-shadow: 0 8px 32px rgba(0,0,0,0.18);
+    z-index: 1001;
+    width: 95vw;
+    max-width: 420px;
+    padding: 0;
+    animation: modalIn 0.2s;
+}
+
+@keyframes modalIn {
+    from { opacity: 0; transform: translate(-50%, -60%);}
+    to { opacity: 1; transform: translate(-50%, -50%);}
+}
+
+.modal-content {
+    padding: 32px 24px 24px 24px;
+    position: relative;
+}
+
+.close {
+    position: absolute;
+    top: 18px;
+    right: 18px;
+    font-size: 1.6rem;
+    color: #64748b;
+    cursor: pointer;
+    transition: color 0.2s;
+}
+
+.close:hover {
+    color: #ef4444;
+}
+
+.modal-content h2 {
+    margin-bottom: 18px;
+    font-size: 1.3rem;
+    font-weight: 600;
+    color: #2563eb;
+}
+
+.modal-content form {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.modal-content label {
+    font-size: 0.98rem;
+    color: #374151;
+    margin-bottom: 4px;
+    font-weight: 500;
+}
+
+.modal-content input, .modal-content select {
+    width: 100%;
+    padding: 8px 10px;
+    border: 1px solid #d1d5db;
+    border-radius: 6px;
+    font-size: 1rem;
+    background: #f9fafb;
+    margin-bottom: 6px;
+    transition: border 0.2s;
+}
+
+.modal-content input:focus, .modal-content select:focus {
+    border-color: #2563eb;
+    outline: none;
+}
+
+.modal-content button[type="submit"] {
+    background: #2563eb;
+    color: #fff;
+    border: none;
+    border-radius: 8px;
+    padding: 12px 0;
+    font-size: 1.05rem;
+    font-weight: 600;
+    cursor: pointer;
+    margin-top: 8px;
+    transition: background 0.2s;
+}
+
+.modal-content button[type="submit"]:hover {
+    background: #1d4ed8;
+}
+
+@media (max-width: 480px) {
+    .modal {
+        max-width: 98vw;
+        padding: 0;
+    }
+    .modal-content {
+        padding: 18px 8px 16px 8px;
+    }
+}
