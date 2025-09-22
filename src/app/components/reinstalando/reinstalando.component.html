@@ -1,0 +1,97 @@
+<div class="loading-container">
+    <div class="loading-content">
+        <h1>Recargando...</h1>
+        <div class="progress-bar">
+            <div class="progress-fill" id="progressFill"></div>
+            <span class="progress-text" id="progressText">1%</span>
+        </div>
+        <p class="loading-message">Estamos reinstalando el sistema. Por favor, espere mientras avanzamos.</p>
+    </div>
+</div>
+
+<style>
+.loading-container {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(135deg, #1e293b 0%, #64748b 100%);
+    font-family: 'Segoe UI', 'Roboto', Arial, sans-serif;
+}
+
+.loading-content {
+    background: rgba(255,255,255,0.05);
+    padding: 48px 40px;
+    border-radius: 24px;
+    box-shadow: 0 8px 32px rgba(30,41,59,0.18);
+    text-align: center;
+    width: 100%;
+    max-width: 400px;
+}
+
+h1 {
+    color: #fff;
+    font-size: 2.2rem;
+    margin-bottom: 32px;
+    font-weight: 600;
+    letter-spacing: 1px;
+}
+
+.progress-bar {
+    position: relative;
+    height: 32px;
+    background: #334155;
+    border-radius: 16px;
+    overflow: hidden;
+    margin-bottom: 24px;
+    box-shadow: 0 2px 8px rgba(30,41,59,0.12);
+}
+
+.progress-fill {
+    height: 100%;
+    background: linear-gradient(90deg, #38bdf8 0%, #0ea5e9 100%);
+    width: 1%;
+    transition: width 1s cubic-bezier(.4,0,.2,1);
+}
+
+.progress-text {
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    color: #fff;
+    font-weight: 500;
+    font-size: 1.1rem;
+    line-height: 32px;
+    text-shadow: 0 1px 4px rgba(30,41,59,0.18);
+}
+
+.loading-message {
+    color: #cbd5e1;
+    font-size: 1rem;
+    margin-top: 16px;
+    letter-spacing: 0.5px;
+}
+</style>
+
+<script>
+let percent = 1;
+const progressFill = document.getElementById('progressFill');
+const progressText = document.getElementById('progressText');
+
+// Avanza 1% cada 2 horas (7200000 ms)
+const interval = 7200000; // Cambia a 3600000 para 1 hora
+
+function updateProgress() {
+    if (percent < 100) {
+        percent++;
+        progressFill.style.width = percent + '%';
+        progressText.textContent = percent + '%';
+    }
+}
+
+progressFill.style.width = percent + '%';
+progressText.textContent = percent + '%';
+
+setInterval(updateProgress, interval);
+</script>
