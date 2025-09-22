@@ -10,10 +10,11 @@ import { RoomListComponent } from './components/room-list/room-list.component';
 import { LimpiezaDashboardComponent } from './components/limpieza-dashboard/limpieza-dashboard.component';
 import { ConstruccionComponent } from './components/construccion/construccion.component';
 import { CalendarioComponent } from './components/calendario/calendario.component';
+import { ReinstalandoComponent } from './components/reinstalando/reinstalando.component';
 
 export const routes: Routes = [
-    {path: "", component: LoginComponent},
-   // {path: "", component: ConstruccionComponent},
+    //{path: "", component: LoginComponent},
+   {path: "", component: ReinstalandoComponent},
     {path: "admin", component: AdminDashboardComponent, children: [
         //{path: "", component: AdminroomMapComponent},
         {path: "", component: CalendarioComponent},
