@@ -14,7 +14,8 @@ import { ReinstalandoComponent } from './components/reinstalando/reinstalando.co
 
 export const routes: Routes = [
     //{path: "", component: LoginComponent},
-   {path: "", component: ReinstalandoComponent},
+   //{path: "", component: ReinstalandoComponent},
+   {path: "", component: ConstruccionComponent},
     {path: "admin", component: AdminDashboardComponent, children: [
         //{path: "", component: AdminroomMapComponent},
         {path: "", component: CalendarioComponent},
