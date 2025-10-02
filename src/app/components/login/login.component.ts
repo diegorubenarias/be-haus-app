@@ -50,13 +50,15 @@ export class LoginComponent implements AfterViewInit{
 
   onSubmit() {
    // this.showInvalidToast = true;
-    if (this.email && this.password) {
+   this.router.navigate(["prod"]);
+   return;
+/*if (this.email && this.password) {
       this.authService.login(this.email, this.password)
       .subscribe((user: any) => {
         if (user) {
           localStorage.setItem('user', JSON.stringify(user));          
    //       this.router.navigate(['admin']);
-    this.router.navigate(['PROD']);
+    this.router.navigate(['prod']);
           //this.router.navigate(["construccion"]);
         } else {
           this.showInvalidToast = true;
@@ -68,7 +70,7 @@ export class LoginComponent implements AfterViewInit{
         });
     } else {
       alert("Credenciales Invalidas");
-    }
+    }*/
   }
 
 }

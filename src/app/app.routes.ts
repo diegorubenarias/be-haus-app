@@ -11,12 +11,13 @@ import { LimpiezaDashboardComponent } from './components/limpieza-dashboard/limp
 import { ConstruccionComponent } from './components/construccion/construccion.component';
 import { CalendarioComponent } from './components/calendario/calendario.component';
 import { ReinstalandoComponent } from './components/reinstalando/reinstalando.component';
+import { CongifuracionComponent } from './components/congifuracion/congifuracion.component';
 
 export const routes: Routes = [
     {path: "", component: LoginComponent},
    //{path: "", component: ReinstalandoComponent},
   //  {path: "", component: ConstruccionComponent},
-  {path: "prod", component: ConstruccionComponent},
+ 
     {path: "admin", component: AdminDashboardComponent, children: [
         //{path: "", component: AdminroomMapComponent},
         {path: "", component: CalendarioComponent},
@@ -28,6 +29,7 @@ export const routes: Routes = [
     ]},
     {path: "limpieza", component: LimpiezaDashboardComponent},
     {path: "user", component: UserViewComponent},
-    {path: "construccion", component: ConstruccionComponent}
+    {path: "construccion", component: ConstruccionComponent},
+     {path: "prod", component: CongifuracionComponent}
 
 ];
