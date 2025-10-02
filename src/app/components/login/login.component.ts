@@ -49,13 +49,14 @@ export class LoginComponent implements AfterViewInit{
   }
 
   onSubmit() {
-    this.showInvalidToast = true;
+   // this.showInvalidToast = true;
     if (this.email && this.password) {
       this.authService.login(this.email, this.password)
       .subscribe((user: any) => {
         if (user) {
           localStorage.setItem('user', JSON.stringify(user));          
    //       this.router.navigate(['admin']);
+    this.router.navigate(['PROD']);
           //this.router.navigate(["construccion"]);
         } else {
           this.showInvalidToast = true;
