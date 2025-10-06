@@ -12,6 +12,7 @@ import { ConstruccionComponent } from './components/construccion/construccion.co
 import { CalendarioComponent } from './components/calendario/calendario.component';
 import { ReinstalandoComponent } from './components/reinstalando/reinstalando.component';
 import { CongifuracionComponent } from './components/congifuracion/congifuracion.component';
+import { TutorialComponent } from './components/tutorial/tutorial.component';
 
 export const routes: Routes = [
     {path: "", component: LoginComponent},
@@ -30,6 +31,6 @@ export const routes: Routes = [
     {path: "limpieza", component: LimpiezaDashboardComponent},
     {path: "user", component: UserViewComponent},
     {path: "construccion", component: ConstruccionComponent},
-     {path: "prod", component: CongifuracionComponent}
+     {path: "prod", component: TutorialComponent}
 
 ];
