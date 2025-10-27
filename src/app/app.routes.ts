@@ -16,8 +16,8 @@ import { TutorialComponent } from './components/tutorial/tutorial.component';
 
 export const routes: Routes = [
    // {path: "", component: LoginComponent},
-   {path: "", component: ReinstalandoComponent},
-  //  {path: "", component: ConstruccionComponent},
+  // {path: "", component: ReinstalandoComponent},
+    {path: "", component: ConstruccionComponent},
  
     {path: "admin", component: AdminDashboardComponent, children: [
         //{path: "", component: AdminroomMapComponent},
